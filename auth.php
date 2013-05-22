@@ -123,7 +123,7 @@
       'user_secret' => USER_SECRET
     ));
 
-    if ($connection->request('GET', $connection->url('1/account/verify_credentials')) !== 200) {
+    if ($connection->request('GET', $connection->url('1.1/account/verify_credentials.json')) !== 200) {
       return false;
     }
     return true;
