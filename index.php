@@ -167,20 +167,8 @@
         if (preg_match('/自[\d]{4}年[\d]{1,2}月[\d]{1,2}日起/', $weibo[$i]['text'])) {
           $tweets[++$j]['status'] = '#营运动态 '.$weibo[$i]['text'];
         }
-        elseif (preg_match('/^(#魔坛图片精选#)/', $weibo[$i]['text'])) {
-          $tweets[++$j]['status'] = trim(preg_replace('/^(#魔坛图片精选#)/', '#魔坛图片精选', $weibo[$i]['text']));
-        }
-        elseif (preg_match('/^(#魔坛精选#)/', $weibo[$i]['text'])) {
-          $tweets[++$j]['status'] = trim(preg_replace('/^(#魔坛精选#)/', '#魔坛精选', $weibo[$i]['text']));
-        }
-        elseif (preg_match('/^(#魔坛活动#)/', $weibo[$i]['text'])) {
-          $tweets[++$j]['status'] = trim(preg_replace('/^(#魔坛活动#)/', '#魔坛活动', $weibo[$i]['text']));
-        }
-        elseif (preg_match('/^(#魔坛科普#)/', $weibo[$i]['text'])) {
-          $tweets[++$j]['status'] = trim(preg_replace('/^(#魔坛科普#)/', '#魔坛科普', $weibo[$i]['text']));
-        }
-        elseif (preg_match('/^(#巴士模型#)/', $weibo[$i]['text'])) {
-          $tweets[++$j]['status'] = trim(preg_replace('/^(#巴士模型#)/', '#巴士模型', $weibo[$i]['text']));
+        elseif (preg_match('/^(#.*?#)/', $weibo[$i]['text'])) {
+          $tweets[++$j]['status'] = trim(preg_replace('/^(#.+?)(#)/', '${1}', $weibo[$i]['text']));
         }
         else {
           $tweets[++$j]['status'] = trim($weibo[$i]['text']);
